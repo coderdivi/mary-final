@@ -12,7 +12,7 @@ export function Hero() {
       <style>{`
         .hero-wrap {
           position:relative;
-          max-width:1200px;
+          max-width:965px;
           margin:0 auto;
           padding:clamp(6.5rem,10vw,8rem) clamp(1.25rem,4vw,2.5rem) clamp(2rem,5vw,3.5rem);
           min-height:min(88vh,780px);
@@ -51,6 +51,7 @@ export function Hero() {
           .hero-wrap { padding-left:1rem; padding-right:1rem; }
           .hero-actions { flex-direction:column; }
           .hero-action { width:100%; }
+          .hero-text h1 { font-size: clamp(2.1rem, 11vw, 3rem) !important; }
         }
       `}</style>
 
@@ -99,15 +100,13 @@ export function Hero() {
                 <div key={av} style={{ width: "1.875rem", height: "1.875rem", borderRadius: "50%", background: ["#C97B2E", "#8B9E6A", "#8A6A9A"][i], border: "2px solid var(--background)", marginLeft: i === 0 ? 0 : -8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.56rem", fontWeight: 700, color: "#fff" }}>{av}</div>
               ))}
             </div>
-            <span style={{ fontFamily: "'Satoshi',sans-serif", fontSize: "0.8rem", color: "var(--muted-txt)" }}>Trusted by <strong style={{ color: "var(--ink)" }}>200+</strong> clients</span>
+            <span style={{ fontFamily: "'Satoshi',sans-serif", fontSize: "0.8rem", color: "var(--muted-txt)" }}>Trusted by <strong style={{ color: "var(--ink)" }}>50+</strong> clients</span>
           </motion.div>
         </div>
 
-        {/* Photo — overlapping, no colored shape behind it, real cutout only */}
         <motion.div className="hero-photo-overlap" initial={{ opacity: 0, x: 30 }} animate={m ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.95, delay: 0.4, ease: EASE }}>
           <img src={maryPhoto} alt="Mary, startup and personal life coach" className="hero-photo-img" />
 
-          {/* Hand-drawn wobbly stamp badge instead of a sphere */}
           <motion.div className="hero-stamp wobble" style={{ position: "absolute", bottom: "8%", right: "-14%", zIndex: 3 }} initial={{ opacity: 0, scale: 0.7 }} animate={m ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 0.6, delay: 1.9, ease: EASE }}>
             <svg width="98" height="98" viewBox="0 0 130 130" style={{ filter: "drop-shadow(0 10px 18px rgba(28,23,18,0.22))" }}>
               <path d="M65,8 C85,5 105,14 115,35 C124,54 122,75 108,92 C94,108 73,116 52,110 C32,104 16,88 11,66 C6,45 14,24 33,13 C43,7 55,9 65,8 Z" fill="var(--ink)" stroke="var(--accent)" strokeWidth="2.5" />
@@ -120,7 +119,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Shared zipper edge: the secondary fill sits behind the hero teeth, so the two sections visually interlock. */}
       <svg
         viewBox="0 0 1200 96"
         width="100%"
