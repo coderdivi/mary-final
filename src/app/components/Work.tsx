@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { FadeIn } from "./FadeIn";
+import { smoothScrollTo } from "../lib/smoothScroll";
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
 const stories = [
@@ -32,6 +33,9 @@ export function Work() {
         .work-card-shell { max-width:100%; }
         @media (max-width: 640px) {
           .work-card-shell { width:100% !important; }
+        }
+        @media (max-width: 520px) {
+          .work-cta { width: 100%; justify-content: center; }
         }
       `}</style>
       <div style={{ maxWidth: "min(900px, 100%)", margin: "0 auto" }}>
@@ -66,7 +70,7 @@ export function Work() {
         </div>
 
         <FadeIn delay={0.4}>
-          <motion.a href="#contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "var(--accent)", color: "#fff", padding: "0.85rem 2rem", fontFamily: "'Satoshi',sans-serif", fontSize: "0.84rem", fontWeight: 500, textDecoration: "none", borderRadius: "4px", marginTop: "2.5rem" }} whileHover={{ scale: 1.02, y: -1 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
+          <motion.a href="#contact" className="work-cta" onClick={(e) => { e.preventDefault(); smoothScrollTo("contact"); }} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "var(--accent)", color: "#fff", padding: "0.85rem 2rem", fontFamily: "'Satoshi',sans-serif", fontSize: "0.84rem", fontWeight: 500, textDecoration: "none", borderRadius: "4px", marginTop: "2.5rem" }} whileHover={{ scale: 1.02, y: -1 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
             See How This Could Look For You →
           </motion.a>
         </FadeIn>

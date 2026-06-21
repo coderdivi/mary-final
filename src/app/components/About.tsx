@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { FadeIn } from "./FadeIn";
+import { smoothScrollTo } from "../lib/smoothScroll";
 
 const stats = [
   { value: "50+", label: "clients coached" },
@@ -19,13 +20,17 @@ export function About() {
         .stamp-box { position: relative; padding: 0.9rem 1.4rem; text-align: center; min-width: 130px; }
         .stamp-border { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px; }
         .stamp-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-        @media (max-width: 768px) {
-          .about-cols { grid-template-columns: 1fr; gap: 1.5rem; }
-        }
+       @media (max-width: 768px) {
+    .about-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+  @media (max-width: 520px) {
+    .about-cta { width: 100%; justify-content: center; }
+  }
+        
       `}</style>
 
       <div style={{ padding: "clamp(8rem,14vw,9rem) 1.5rem clamp(4rem,8vw,5rem)" }}>
-        <div style={{ maxWidth: "min(1400px, 100%)", margin: "0 auto" }}>
+        <div style={{ maxWidth: "min(900px, 100%)", margin: "0 auto" }}>
           <FadeIn>
             <h2 style={{ fontFamily: "'Fraunces',Georgia,serif", fontSize: "clamp(1.9rem,3.2vw,2.7rem)", lineHeight: 1.18, color: "var(--ink)", marginBottom: "1.8rem", maxWidth: "700px" }}>
               5 years inside fast-moving startup teams. Now helping people find <em style={{ fontStyle: "italic", color: "var(--accent)" }}>clarity</em> — wherever they're building from.
@@ -68,9 +73,9 @@ export function About() {
           </FadeIn>
 
           <FadeIn delay={0.4}>
-            <motion.a href="#contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "var(--accent)", color: "#fff", padding: "0.85rem 2rem", fontFamily: "'Satoshi',sans-serif", fontSize: "0.84rem", fontWeight: 500, textDecoration: "none", borderRadius: "4px", marginTop: "2.2rem" }} whileHover={{ scale: 1.02, y: -1 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
-              Work With Me →
-            </motion.a>
+            <motion.a href="#about" className= "about-cta" onClick={(e) => { e.preventDefault(); smoothScrollTo("about"); }} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "var(--accent)", color: "#fff", padding: "0.85rem 2rem", fontFamily: "'Satoshi',sans-serif", fontSize: "0.84rem", fontWeight: 500, textDecoration: "none", borderRadius: "4px", marginTop: "2.2rem" }} whileHover={{ scale: 1.02, y: -1 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
+  Work With Me →
+</motion.a>
           </FadeIn>
         </div>
       </div>

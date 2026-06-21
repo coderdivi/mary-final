@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { smoothScrollTo } from "../lib/smoothScroll";
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
 const links = ["About", "Services", "Work", "Testimonials", "Contact"];
 export function Nav() {
@@ -35,7 +36,7 @@ export function Nav() {
         </a>
         <div className="nd nav-links" style={{alignItems:"center"}}>
           {links.map((l,i)=>(
-            <motion.a key={l} href={`#${l.toLowerCase()}`} style={{fontFamily:"'Satoshi',sans-serif",fontSize:"0.78rem",letterSpacing:"0.06em",textTransform:"uppercase",color:"var(--muted-txt)",textDecoration:"none",position:"relative",whiteSpace:"nowrap"}}
+            <motion.a key={l} href={`#${l.toLowerCase()}`} onClick={(e)=>{e.preventDefault(); smoothScrollTo(l.toLowerCase());}} style={{fontFamily:"'Satoshi',sans-serif",fontSize:"0.78rem",letterSpacing:"0.06em",textTransform:"uppercase",color:"var(--muted-txt)",textDecoration:"none",position:"relative",whiteSpace:"nowrap"}}
               initial={{opacity:0,y:-8}} animate={mounted?{opacity:1,y:0}:{}} transition={{duration:0.4,delay:0.2+i*0.07,ease:EASE}} whileHover={{color:"var(--ink)"}}>
               {l}
               <motion.span style={{position:"absolute",bottom:-2,left:0,height:"1.5px",background:"var(--accent)"}} initial={{width:0}} whileHover={{width:"100%"}} transition={{duration:0.25}}/>
@@ -53,7 +54,7 @@ export function Nav() {
           <motion.div initial={{opacity:0,y:-16}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-16}} transition={{duration:0.28,ease:EASE}}
             style={{position:"fixed",top:58,left:0,right:0,zIndex:499,background:"rgba(255,251,244,0.98)",backdropFilter:"blur(16px)",padding:"1.5rem 2rem",display:"flex",flexDirection:"column",gap:"1.2rem",borderBottom:"1px solid rgba(28,23,18,0.08)"}}>
             {links.map(l=>(
-              <a key={l} href={`#${l.toLowerCase()}`} onClick={()=>setOpen(false)}
+              <a key={l} href={`#${l.toLowerCase()}`} onClick={(e)=>{e.preventDefault(); setOpen(false); smoothScrollTo(l.toLowerCase());}}
                 style={{fontFamily:"'Satoshi',sans-serif",fontSize:"1rem",color:"var(--ink)",textDecoration:"none",padding:"0.3rem 0",borderBottom:"1px solid rgba(28,23,18,0.06)",display:"block"}}>{l}</a>
             ))}
           </motion.div>

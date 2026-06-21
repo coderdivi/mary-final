@@ -65,6 +65,7 @@
   html {
     overflow-x: hidden;
     font-size: clamp(13px, 1.15vw, 16px);
+
   }
   body {
     background-color: var(--background);
